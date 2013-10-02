@@ -1,0 +1,28 @@
+#!/bin/sh
+
+export GOPATH=$PWD/
+export GOMAXPROCS=1
+
+
+# Abort on errors after this point ...
+set -e
+
+if [ "darwin12" = $OSTYPE ]; then
+  git config --global credential.helper osxkeychain
+else
+  git config --global credential.helper store
+fi
+
+echo ""
+echo ".................................................................."
+echo "Installing dependencies .........................................."
+echo ".................................................................."
+echo ""
+
+go get -u "github.com/orfjackal/gospec/src/gospec"
+
+echo ""
+echo ".................................................................."
+echo "Installed dependencies ..........................................."
+echo ".................................................................."
+echo ""
